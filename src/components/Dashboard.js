@@ -1,15 +1,16 @@
-import TaskForm from '../components/TaskForm';
-import TaskList from '../components/TaskList';
-import { useSelector } from 'react-redux';
+// src/components/Dashboard.js
+import { useState } from 'react';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
 
 const Dashboard = () => {
-    const tasks = useSelector((state) => state.tasks);
+    const [taskToEdit, setTaskToEdit] = useState(null);
 
     return (
-        <div className="p-6 bg-gray-50 min-h-screen">
-            <h1 className="text-3xl font-bold text-center mb-8">Dashboard</h1>
-            <TaskForm />
-            <TaskList tasks={tasks} />
+        <div className="p-8">
+            <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+            <TaskForm taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} />
+            <TaskList setTaskToEdit={setTaskToEdit} />
         </div>
     );
 };

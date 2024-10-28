@@ -1,96 +1,65 @@
+// src/components/TaskList.js
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteTask, editTask } from '../store/taskSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTask, deleteTask } from '../store/taskSlice';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ setTaskToEdit }) => {
+    const tasks = useSelector((state) => state.tasks.tasks);
     const dispatch = useDispatch();
-    const [editIndex, setEditIndex] = useState(null);
-    const [editedTask, setEditedTask] = useState({});
+    const [filter, setFilter] = useState({ priority: '', status: '' });
+    const [sortCriteria, setSortCriteria] = useState('');
 
-    const handleEdit = (index, task) => {
-        setEditIndex(index);
-        setEditedTask(task);
-    };
-
-    const handleSave = (index) => {
-        dispatch(editTask({ index, updatedTask: editedTask }));
-        setEditIndex(null);
-        setEditedTask({});
-    };
+    const filteredTasks = tasks.filter((task) => 
+        (!filter.priority || task.priority === filter.priority) &&
+        (!filter.status || task.status === filter.status)
+    ).sort((a, b) => {
+        if (sortCriteria === 'priority') return a.priority.localeCompare(b.priority);
+        if (sortCriteria === 'status') return a.status.localeCompare(b.status);
+        return 0;
+    });
 
     return (
         <div className="bg-white p-6 rounded shadow-md">
             <h2 className="text-xl font-semibold mb-4">Task List</h2>
-            <ul className=" grid grid-cols-2">
-                {tasks.map((task, index) => (
-                    <li key={index} className="p-4 border rounded shadow-sm m-4">
-                        {editIndex === index ? (
-                            <>
-                                <input
-                                    type="text"
-                                    value={editedTask.title}
-                                    placeholder={editedTask.title}
-                                    onChange={(e) =>
-                                        setEditedTask({ ...editedTask, title: e.target.value })
-                                    }
-                                    className="w-full p-2 mb-2 border rounded"
-                                />
-                                <textarea
-                                    value={editedTask.description}
-                                    placeholder={editedTask.description}
-                                    onChange={(e) =>
-                                        setEditedTask({ ...editedTask, description: e.target.value })
-                                    }
-                                    className="w-full p-2 mb-2 border rounded"
-                                />
-                                <select
-                                    value={editedTask.priority}
-                                    onChange={(e) =>
-                                        setEditedTask({ ...editedTask, priority: e.target.value })
-                                    }
-                                    className="w-full p-2 mb-2 border rounded"
-                                >
-                                    <option>Low</option>
-                                    <option>Medium</option>
-                                    <option>High</option>
-                                </select>
-                                <button
-                                    onClick={() => handleSave(index)}
-                                    className="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 mr-2"
-                                >
-                                    Save
-                                </button>
-                                <button
-                                    onClick={() => setEditIndex(null)}
-                                    className="bg-gray-500 text-white px-4 py-1 rounded hover:bg-gray-600"
-                                >
-                                    Cancel
-                                </button>
-                            </>
-                        ) : (
-                            <div className=''>
-                                <h3 className="text-lg font-bold">{task.title}</h3>
-                                <p>{task.description}</p>
-                                <p className="text-sm text-gray-600">Priority: {task.priority}</p>
-                                <div className='float-end'>
-                                <button
-                                    onClick={() => handleEdit(index, task)}
-                                    className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 mr-2"
-                                >
-                                    Edit
-                                </button>
-                                <button
-                                    onClick={() => dispatch(deleteTask(index))}
-                                    className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
-                                >
-                                    Delete
-                                </button>
-                                </div>
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
+            {/* Filter & Sort Controls */}
+            <div className="flex gap-4 mb-4">
+                <select name="priority" onChange={(e) => setFilter({ ...filter, priority: e.target.value })} className="p-2 border rounded">
+                    <option value="">Priority</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <select name="status" onChange={(e) => setFilter({ ...filter, status: e.target.value })} className="p-2 border rounded">
+                    <option value="">Status</option>
+                    <option value="Open">Open</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Closed">Closed</option>
+                </select>
+                <select onChange={(e) => setSortCriteria(e.target.value)} className="p-2 border rounded">
+                    <option value="">Sort By</option>
+                    <option value="priority">Priority</option>
+                    <option value="status">Status</option>
+                </select>
+            </div>
+            <div className='grid grid-cols-2'>
+            {filteredTasks.map((task) => (
+                <div key={task.id} className="border p-4 m-2 rounded">
+                    <h3 className="text-lg font-bold">{task.title}</h3>
+                    <p className="mb-2">{task.description}</p>
+                    <div className="flex justify-between items-center">
+                        <div>
+                            <p className="text-gray-600">Priority: {task.priority}</p>
+                            <p className="text-gray-600">Status: {task.status}</p>
+                            <p className="text-gray-600">Assignee: {task.assignee}</p>
+                        </div>
+                        <div className="flex gap-2">
+                            <button onClick={() => setTaskToEdit(task)} className="bg-blue-500 text-white py-1 px-2 rounded">Edit</button>
+                            <button onClick={() => dispatch(deleteTask(task.id))} className="bg-red-500 text-white py-1 px-2 rounded">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            </div>
         </div>
     );
 };

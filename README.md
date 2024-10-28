@@ -29,3 +29,39 @@
     - Used React.js for the frontend framework.
     - Used Tailwind-CSS for styling.
 
+**Images:**
+
+> Login page:
+![alt text](img/image0.png)
+
+> Giving Credentials to login:
+![alt text](img/image1.png)
+
+> Invalid Credentials:
+![alt text](img/image2.png)
+
+> Valid Credentials:
+![alt text](img/image3.png)
+
+> Rendered to Dashboard page:
+![alt text](img/image4.png)
+
+> Creating a Task:
+![alt text](img/image5.png)
+
+> Adding Task: 
+![alt text](img/image6.png)
+
+> Task Managing:
+![alt text](img/image7.png)
+
+> Updating/Editing Task:
+![alt text](img/image8.png)
+
+> Filtering Tasks:
+![alt text](img/image9.png)
+![alt text](img/image9_1.png)
+
+> Deleting Tasks:
+![alt text](img/image10.png)
+![alt text](img/image10_1.png)
