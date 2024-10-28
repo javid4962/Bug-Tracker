@@ -82,6 +82,12 @@ This is a bug/task tracker application built with React, Redux, and Tailwind CSS
     ```bash
     npm start
     ```
+2. **Login Credentials**
+
+    ```bash
+    Username:user
+    Password:password123
+    ```
 
 ### Overview
 
