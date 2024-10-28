@@ -1,5 +1,6 @@
 # Bug/Task Tracker Application
-Demo URL: https://bug-tracky.netlify.app
+- Demo URL: https://bug-tracky.netlify.app
+- Video URL: https://youtu.be/xYuvm13ZLOw
 
 ## Overview
 
