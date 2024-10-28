@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Bug-Tracker
+# FealtyX - NextJS/React JS Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **Project: Bug/Task Tracker Interface**
 
-## Available Scripts
+**Objective:** Created a bug/task tracker web application - as you mensioned to assess Frontend Developement skills, UI/UX design sensibilities, and ability to work with the Next.js/ReactJS framework.
 
-In the project directory, you can run:
+**Features:**
 
-### `npm start`
+1. **User Authentication:**
+    - Implemented a simple login system. used a mock authentication method.
+    - On successful login, the user redirected to the dashboard page.
+2. **Dashboard:**
+    - After logging in, the user land on a dashboard where they can view and manage their tasks/bugs.
+    - The dashboard displays a list of tasks with relevant details.
+    - Dashboard should also have a trend line of concurrent tasks worked upon each day.
+3. **Task/Bug Creation:**
+    - Users should be able to create a new task/bug for their team/projects with fields like Title, Description, Priority,Status Assignee, important dates, etc. Think about and include any additional fields that might be relevant for a comprehensive bug tracker application.
+4. **Task/Bug Management:**
+    - Users should be able to edit and delete tasks.
+    - Implement a way to filter/sort tasks based on different criteria (priority, status, etc.).
+5. **Time Tracker:**
+    - Add a time tracking feature to log the time spent on each task.
+    - Display the total time spent on each task.
+6. **UI/UX:**
+    - Focused on creating a clean, intuitive, and user-friendly interface.
+    - Ensured the application is responsive and works well on desktop, brownie points for mobile compatibility.
+7. **Technology Stack:**
+    - Used React.js for the frontend framework.
+    - Used Tailwind-CSS for styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
