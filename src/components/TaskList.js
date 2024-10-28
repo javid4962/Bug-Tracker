@@ -1,7 +1,7 @@
 // src/components/TaskList.js
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTask, deleteTask } from '../store/taskSlice';
+import { deleteTask } from '../store/taskSlice';
 
 const TaskList = ({ setTaskToEdit }) => {
     const tasks = useSelector((state) => state.tasks.tasks);
@@ -22,7 +22,7 @@ const TaskList = ({ setTaskToEdit }) => {
         <div className="bg-white p-6 rounded shadow-md">
             <h2 className="text-xl font-semibold mb-4">Task List</h2>
             {/* Filter & Sort Controls */}
-            <div className="flex gap-4 mb-4">
+            <div className="flex gap-1 flex-wrap sm:gap-2 mb-4">
                 <select name="priority" onChange={(e) => setFilter({ ...filter, priority: e.target.value })} className="p-2 border rounded">
                     <option value="">Priority</option>
                     <option value="Low">Low</option>
@@ -41,7 +41,7 @@ const TaskList = ({ setTaskToEdit }) => {
                     <option value="status">Status</option>
                 </select>
             </div>
-            <div className='grid grid-cols-2'>
+            <div className='grid grid-cols-1 sm:grid-cols-2'>
             {filteredTasks.map((task) => (
                 <div key={task.id} className="border p-4 m-2 rounded">
                     <h3 className="text-lg font-bold">{task.title}</h3>
